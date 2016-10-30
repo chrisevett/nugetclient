@@ -1,3 +1,4 @@
+[![Build status](https://ci.appveyor.com/api/projects/status/hmwh3oismpset4m3/branch/master?svg=true)](https://ci.appveyor.com/project/chrisevett/nugetclient/branch/master)
 # nugetclient Cookbook
 
 Provides some nuget cli functionality for chef. I initially wrote this so chef could serve as a drop in replacement for octopus deploy without having to implement a different packaging workflow.  
