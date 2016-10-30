@@ -1,0 +1,23 @@
+# shamelessly stolen https://github.com/chocolatey/chocolatey-cookbook/blob/master/.kitchen.appveyor.yml
+# blog post here http://www.hurryupandwait.io/blog/run-kitchen-tests-in-travis-and-appveyor-using-the-kitchen-machine-driver
+---
+driver:
+  name: proxy
+  host: localhost
+  reset_command: "exit 0"
+  username: <%= ENV["winrm_user"] %>
+  password: <%= ENV["winrm_pass"] %>
+  port: <%= ENV["winrm_port"] %>
+# note: ^ these environment vars are set by appveyor.yml
+
+
+provisioner:
+  name: chef_zero
+
+platforms:
+- name: windows-2012R2
+
+suites:
+  - name: default
+    run_list:
+      - recipe[test-nugetclient::default]
