@@ -4,7 +4,7 @@ maintainer_email 'chris.evett@gmail.com'
 license          'MIT'
 description      'library cookbook for utilizing nuget feeds'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version          '0.1.0'
+version          '0.1.1'
 depends          'chocolatey'
 issues_url       'chris.evett@gmail.com'
 source_url       'https://github.com/chrisevett/nugetclient'
