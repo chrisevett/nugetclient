@@ -11,11 +11,11 @@ environment:
   winrm_user: test_user
   winrm_pass: Pass@word1
   winrm_port: 5985
-  KITCHEN_YAML: c:\projects\nugetclient\.kitchen.appveyor.yml
+  KITCHEN_YAML: c:\projects\nugetclient\test\cookbooks\test-nugetclient\.kitchen.appveyor.yml
   SSL_CERT_FILE: c:\projects\nugetclient\certs.pem
 
   matrix:
-    - ruby_version: "21"
+    - ruby_version: "23"
 
 clone_folder: c:\projects\nugetclient
 clone_depth: 1
@@ -31,16 +31,16 @@ install:
   - ps: ruby --version
   - ps: gem --version
   - ps: gem install bundler --quiet --no-ri --no-rdoc
-  - ps: Invoke-WebRequest -Uri http://curl.haxx.se/ca/cacert.pem -OutFile c:\projects\chocolatey-cookbook\certs.pem
+  - ps: Invoke-WebRequest -Uri http://curl.haxx.se/ca/cacert.pem -OutFile c:\projects\nugetclient\certs.pem
   - ps: bundler --version
 
 build_script:
   - bundle install || bundle install || bundle install
   - pushd c:\projects\nugetclient\test\cookbooks\test-nugetclient\
   - bundle install || bundle install || bundle install
-  - popd
 
 test_script:
+  - pushd c:\projects\nugetclient\
   - bundle exec rake 
   - pushd c:\projects\nugetclient\test\cookbooks\test-nugetclient\
   - bundle exec kitchen verify
